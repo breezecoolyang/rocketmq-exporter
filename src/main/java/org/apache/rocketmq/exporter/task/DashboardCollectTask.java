@@ -104,7 +104,7 @@ public class DashboardCollectTask {
 
                             inTPS += bsd.getStatsMinute().getTps();
                             inMsgCntToday += StatsAllSubCommand.compute24HourSum(bsd);
-                            topicCollector.AddMetric(topic, inTPS);
+                            topicCollector.AddMetric(bd.getCluster(), bd.getBrokerName(), topic, inTPS);
 
                         }
                         catch (Exception e) {
@@ -146,8 +146,8 @@ public class DashboardCollectTask {
                     list = Lists.newArrayList();
                 }
 
-                list.add(date.getTime() + "," + new BigDecimal(inTPS).setScale(5, BigDecimal.ROUND_HALF_UP) + "," + inMsgCntToday + "," + new BigDecimal(outTPS).setScale(5, BigDecimal.ROUND_HALF_UP) + "," + outMsgCntToday);
-                dashboardCollectService.getTopicMap().put(topic, list);
+//                list.add(date.getTime() + "," + new BigDecimal(inTPS).setScale(5, BigDecimal.ROUND_HALF_UP) + "," + inMsgCntToday + "," + new BigDecimal(outTPS).setScale(5, BigDecimal.ROUND_HALF_UP) + "," + outMsgCntToday);
+//                dashboardCollectService.getTopicMap().put(topic, list);
 
 
             }

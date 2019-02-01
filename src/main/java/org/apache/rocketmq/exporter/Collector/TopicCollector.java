@@ -25,10 +25,10 @@ public class TopicCollector extends Collector {
         System.out.println("topicMetrics length is " + topicToMetrics.values().size());
         return  new ArrayList<>(topicToMetrics.values());
     }
-    public void AddMetric(String topic, double value)
+    public void AddMetric(String clusterName, String brokerName, String topic,  double value)
     {
-        GaugeMetricFamily labeledGauge = new GaugeMetricFamily("producer.ts", "InTps", Arrays.asList("topic"));
-        labeledGauge.addMetric(Arrays.asList(topic), value);
+        GaugeMetricFamily labeledGauge = new GaugeMetricFamily("producer_ts", "InTps", Arrays.asList("cluster","broker","topic"));
+        labeledGauge.addMetric(Arrays.asList(clusterName, brokerName, topic), value);
         topicToMetrics.put(topic, labeledGauge);
 
     }
